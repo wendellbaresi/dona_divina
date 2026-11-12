@@ -53,3 +53,85 @@ churrasquinho-dona-divina/
         ├── SaidasView.html
         ├── ContasView.html
         └── DashboardView.html
+```
+
+## ⚙️ Como Configurar e Rodar Localmente
+Como o projeto roda na infraestrutura do Google Apps Script, o front-end consome as APIs do servidor via google.script.run. Para versionar e manipular os códigos localmente utilizando o terminal:
+
+1. Pré-requisitos
+* Certifique-se de ter instalado em sua máquina:
+
+* Node.js (versão LTS recomendada)
+
+* Git
+
+2. Instalação da Ferramenta Clasp (Google Apps Script CLI)
+* O clasp permite clonar, enviar e puxar códigos diretamente do Google Apps Script para o seu computador.
+
+* Abra o terminal e instale o clasp globalmente:
+
+```Bash
+npm install @google/clasp -g
+```
+
+3. Fazer Login no Google
+* Autentique sua conta Google pelo terminal:
+
+```Bash
+clasp login
+```
+
+4. Clonar o Projeto do Apps Script para a sua Máquina
+Se você já possui um projeto criado no Google Apps Script, pegue o ID do Script (encontrado em Configurações do Projeto ⚙️ > ID do Script) e execute:
+
+```Bash
+clasp clone <COLOQUE_SEU_SCRIPT_ID_AQUI>
+```
+
+5. Se preferir inicializar um projeto novo a partir da estrutura deste repositório:
+
+* Crie um projeto em script.google.com.
+
+* Copie o ID do Script nas configurações.
+
+* Na pasta do seu projeto local, crie um arquivo .clasp.json com o conteúdo:
+
+```JSON
+{
+  "scriptId": "SEU_SCRIPT_ID_AQUI",
+  "rootDir": "."
+}
+```
+
+6. Envie os arquivos locais para o Google com:
+
+
+```Bash
+clasp push
+```
+
+---
+
+## 🚀 Como Publicar e Atualizar em Produção
+1. Para gerar uma nova versão estável
+
+2. Acesse o editor do Google Apps Script.
+
+3. Clique em Implantar > Nova implantação.
+
+4. Selecione o tipo Aplicativo da Web.
+
+5. Defina a descrição, execute como "Eu" e permita o acesso para "Qualquer pessoa".
+
+6. Copie o link final gerado terminado em /exec.
+
+7. Para enviar alterações feitas localmente no seu editor de código direto para o Google:
+
+```Bash
+clasp push
+```
+
+---
+
+## 🛡️ Licença
+* Desenvolvido exclusivamente para uso comercial e operacional do Churrasquinho da Dona Divina.
