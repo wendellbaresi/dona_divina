@@ -13,14 +13,11 @@ function apiCheckAdminPermission() {
     email = "";
   }
 
-  // Se por restrição do Google o e-mail vier vazio na URL de teste (/dev), 
-  // validamos se o e-mail efetivo ou ativo bate com a lista. 
-  // Caso contrário, forçamos a permissão para os e-mails conhecidos da lista VIP:
   const isVip = ADMIN_EMAILS.includes(email) || ADMIN_EMAILS.includes(Session.getEffectiveUser().getEmail());
 
   return { 
-    email: email || Session.getEffectiveUser().getEmail() || "lucasrobertoo2020@gmail.com", 
-    isAdmin: true // Liberado para os administradores listados
+    email: email || Session.getEffectiveUser().getEmail() || "EMAIL_AQUI@gmail.com", 
+    isAdmin: true 
   };
 }
 
@@ -29,10 +26,8 @@ const CONFIG = Object.freeze({
   PHONE: 'TELEFONE_AQUI',
   WORK_HOURS: 'HORARIO_AQUI',
   
-  // ID da planilha informada
   SPREADSHEET_ID: 'ID_PLANILHA_AQUI',
 
-  // Mapeamento exato das abas criadas na planilha
   SHEET_NAMES: {
     VENDAS: 'ABA_PLANILHA_AQUI',
     COMPRAS: 'ABA_PLANILHA_AQUI',

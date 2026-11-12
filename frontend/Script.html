@@ -1,5 +1,4 @@
 <script>
-  // --- CONTROLE DE SESSÃO / INATIVIDADE (30 Minutos) E LISTA VIP ---
   let inactivityTimeout;
   const SESSION_LIMIT_MS = 30 * 60 * 1000;
 
@@ -39,7 +38,6 @@
       .apiCheckAdminPermission();
   }
 
-  // --- REPOSITÓRIO DE CACHE LOCAL (CLIENT-SIDE) ---
   const LocalCache = {
     clientes: null,
     contas: null,
@@ -52,7 +50,6 @@
     }
   };
 
-  // --- ESTRUTURA DO CATÁLOGO DE PRODUTOS ---
   const ESTRUTURA_CATALOGO = [
     {
       secao: 'Baguetes',
@@ -110,11 +107,10 @@
 
   let cart = []; 
   let tempSelectedItem = null;
-  let comandaEmAdicao = null; // { id, nome, mesa }
+  let comandaEmAdicao = null;
   let editingId = null;
   let deletingId = null;
 
-  // --- ROUTER (SPA) ---
   const Router = {
     navigateTo: function(viewName, event) {
       if (event) event.preventDefault();
@@ -177,7 +173,6 @@
     }
   };
 
-  // --- CONTROLADOR DE PRODUTOS ---
   const ProdutosController = {
     render: function() {
       this.filter();
@@ -368,7 +363,6 @@
     Router.navigateTo('clientes');
   }
 
-  // --- ENVIAR PARA COZINHA (IMPRESSÃO TÉRMICA) ---
   function enviarParaCozinha(nomeCliente, mesa, itensArray) {
     const janelaCozinha = window.open('', '_blank', 'width=380,height=550');
     if (!janelaCozinha) return;
@@ -411,7 +405,6 @@
     janelaCozinha.document.close();
   }
 
-  // --- MODAL DE BAGUETES ---
   function selectBagueteTamanho(tamanho) {
     if (!tempSelectedItem) return;
     let preco = 24.00;
@@ -432,7 +425,6 @@
     tempSelectedItem = null;
   }
 
-  // --- CONTROLADOR DE CLIENTES E COMANDAS (COM CACHE) ---
   let clienteIdParaExcluir = null;
 
   const ClientesController = {
@@ -446,7 +438,6 @@
       }
       const dataFiltro = inputData ? inputData.value : "";
 
-      // Se já estiver em cache no navegador e não pediu atualização forçada, renderiza na hora!
       if (!forcarAtualizacao && LocalCache.clientes) {
         this.render(LocalCache.clientes, dataFiltro);
         return;
@@ -531,7 +522,7 @@
     pagar: function(id) {
       google.script.run
         .withSuccessHandler(() => {
-          LocalCache.clearAll(); // Invalida o cache para buscar dados atualizados
+          LocalCache.clearAll();
           showBusinessAlert("Conta Quitada", "Conta quitada com sucesso e receita lançada no caixa!", "success");
           ClientesController.load(true);
         })
@@ -565,7 +556,6 @@
       .apiDeleteCliente(id);
   }
 
-  // --- CONTROLADOR DE CONTAS DA LOJA (COM CACHE) ---
   const ContasController = {
     load: function(forcarAtualizacao = false) {
       const selectMes = document.getElementById("selectMesContas");
@@ -708,7 +698,6 @@
     document.getElementById("modalDelete").style.display = "flex";
   }
 
-  // --- ALERTAS EMPRESARIAIS ---
   function showBusinessAlert(title, message, type = 'success') {
     const iconEl = document.getElementById("modalAlertIcon");
     const titleEl = document.getElementById("modalAlertTitle");
@@ -726,7 +715,6 @@
     if (modalEl) modalEl.style.display = "none";
   }
 
-  // --- CHECKOUT E ADIÇÃO (SALVANDO NA PLANILHA) ---
   function closeCheckoutModal() {
     document.getElementById("modalCheckout").style.display = "none";
     document.getElementById("inputNomeCliente").disabled = false;
@@ -820,7 +808,6 @@
       .apiSaveCliente(payloadCliente);
   }
 
-  // --- FECHAMENTO DE CAIXA DO DIA ---
   function abrirFechamentoCaixa() {
     const hoje = new Date().toISOString().split('T')[0];
     google.script.run
@@ -836,7 +823,6 @@
       .apiGetFechamentoCaixaDiario(hoje);
   }
 
-  // --- DEMAIS CONTROLADORES ---
   const DashboardController = {
     reload: function() { FinanceStore.loadData(true); },
     render: function(data) {
