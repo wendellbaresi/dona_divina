@@ -1,0 +1,49 @@
+<section id="view-dashboard" class="page-view">
+  <div class="filter-bar" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+    
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <label style="font-weight: 600; font-size: 0.9rem; color: #475569;">Mês de Referência:</label>
+      <select id="selectMesReferencia" class="form-control" style="padding: 8px 12px; border-radius: 6px; border: 1px solid #CBD5E1; background: #fff; font-weight: 600;" onchange="DashboardController.reload()">
+        <option value="">Carregando meses...</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="abrirFechamentoCaixa()" style="background: #0F172A; border: none; padding: 9px 16px; font-weight: bold; border-radius: 6px; display: flex; align-items: center; gap: 6px; cursor: pointer; color: white;">
+      🔒 Fechar Caixa do Dia
+    </button>
+
+  </div>
+
+  <div class="kpi-grid">
+    <div class="card kpi-card green">
+      <div class="kpi-title">Total Entradas (Recebido)</div>
+      <div class="kpi-value" id="totalEntradas">R$ 0,00</div>
+    </div>
+    <div class="card kpi-card red">
+      <div class="kpi-title">Total Saídas (Gasto)</div>
+      <div class="kpi-value" id="totalSaidas">R$ 0,00</div>
+    </div>
+    <div class="card kpi-card blue">
+      <div class="kpi-title">Saldo em Caixa</div>
+      <div class="kpi-value" id="saldoAtual">R$ 0,00</div>
+    </div>
+  </div>
+
+  <div class="card table-container">
+    <h3>Últimas Movimentações do Mês</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Tipo</th>
+          <th>Categoria</th>
+          <th>Descrição</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody id="transactionTableBody">
+        <tr><td colspan="5">Carregando dados...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>

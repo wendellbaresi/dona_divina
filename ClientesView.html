@@ -1,0 +1,30 @@
+<section id="view-clientes" class="page-view" style="display: none;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+    <h2>Controle de Clientes e Comandas</h2>
+    
+    <!-- BARRA DE FILTRO POR DATA -->
+    <div style="display: flex; align-items: center; gap: 8px; background: white; padding: 6px 12px; border-radius: 8px; border: 1px solid #CBD5E1;">
+      <label for="filtroDataClientes" style="font-size: 0.85rem; font-weight: 600; color: #475569;">Filtrar Data:</label>
+      <input type="date" id="filtroDataClientes" class="form-control" style="padding: 4px 8px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 0.9rem;" onchange="ClientesController.load()">
+      <button type="button" class="btn" onclick="ClientesController.limparFiltroData()" style="background: #F1F5F9; border: 1px solid #CBD5E1; padding: 4px 8px; font-size: 0.8rem; border-radius: 6px; cursor: pointer;">Mostrar Todos</button>
+    </div>
+  </div>
+
+  <div class="card table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Data</th>
+          <th>Itens / Pedido</th>
+          <th>Valor Total</th>
+          <th>Status</th>
+          <th style="text-align: center;">Ações</th>
+        </tr>
+      </thead>
+      <tbody id="clientesTableBody">
+        <tr><td colspan="6" style="text-align: center;">Carregando dados dos clientes...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>

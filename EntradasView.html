@@ -1,0 +1,26 @@
+<section id="view-entradas" class="page-view" style="display: none;">
+  <div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h2>Controle de Entradas</h2>
+      <button class="btn btn-primary" onclick="openModal()">+ Novo Lançamento</button>
+    </div>
+    <p style="color: #64748B; font-size: 0.85rem; margin-bottom: 15px;">Listagem analítica exclusiva de todas as entradas financeiras da loja.</p>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Tipo</th>
+            <th>Categoria</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th style="text-align: center;">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="entradasTableBody">
+          <tr><td colspan="5">Carregando dados...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
