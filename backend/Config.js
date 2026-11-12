@@ -1,7 +1,5 @@
 const ADMIN_EMAILS = [
-  "wendell.bzinho@gmail.com",
-  "wendellbaresi93@gmail.com",
-  "lucasrobertoo2020@gmail.com"
+  "SEU_EMAIL_AQUI@gmail.com",
 ];
 
 function apiCheckAdminPermission() {
@@ -27,19 +25,19 @@ function apiCheckAdminPermission() {
 }
 
 const CONFIG = Object.freeze({
-  APP_NAME: 'Churrasquinho da Dona Divina',
-  PHONE: '(61) 9 94448236',
-  WORK_HOURS: 'Todos os dias 18:00 ás 23:30h.',
+  APP_NAME: 'NOME_DA_LOJA_AQUI',
+  PHONE: 'TELEFONE_AQUI',
+  WORK_HOURS: 'HORARIO_AQUI',
   
   // ID da planilha informada
-  SPREADSHEET_ID: '1QBu6oqMP_cphZEMd0gTPGUADVMwHlbOUQllI7eSQOqA',
+  SPREADSHEET_ID: 'ID_PLANILHA_AQUI',
 
   // Mapeamento exato das abas criadas na planilha
   SHEET_NAMES: {
-    VENDAS: 'controle_de_vendas',
-    COMPRAS: 'controle_de_compras',
-    CONTAS: 'controle_financeiro_contas',
-    ESTOQUE: 'controle_estoque'
+    VENDAS: 'ABA_PLANILHA_AQUI',
+    COMPRAS: 'ABA_PLANILHA_AQUI',
+    CONTAS: 'ABA_PLANILHA_AQUI',
+    ESTOQUE: 'ABA_PLANILHA_AQUI'
   },
 
   THEME: {
